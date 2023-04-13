@@ -65,8 +65,8 @@ const StyledSection = styled.section`
   text-align: center;
   margin: 2em;
   padding: 0.5em;
-  border-radius: 10px;
-  width: 40%;
+  border-radius: 30px;
+  width: 30%;
 `;
 
 const StyledP = styled.p`
