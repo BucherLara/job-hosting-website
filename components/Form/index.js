@@ -15,9 +15,6 @@ export default function Form() {
         <input type="text" id="description" required pattern=".*[\S]+.*" />
         <button type="submit">Add job </button>
       </form>
-      <button type="button" onClick={() => router.push("/")}>
-        Go back
-      </button>
     </>
   );
 }

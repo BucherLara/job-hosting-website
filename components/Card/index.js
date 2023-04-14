@@ -39,7 +39,7 @@ export default function Card() {
     <Container>
       <StyledP>All job listings</StyledP>
       {data.map((card) => (
-        <StyledSection>
+        <StyledSection key={card.id}>
           <Title>{card.title}</Title>
           <p>{card.company}</p>
           <p>{card.location}</p>
