@@ -1,49 +1,18 @@
 import styled from "styled-components";
-const data = [
-  {
-    id: 1,
-    title: "chef",
-    company: "cooking Academy",
-    location: "Barcelona",
-    description: "super duper and very well paid job",
-    date: "01.01.2000",
-  },
+import Link from "next/link";
 
-  {
-    id: 2,
-    title: "postman",
-    company: "postman Academy",
-    location: "Leibzig",
-    description: "letters and postcards",
-    date: "14.05.2010",
-  },
-  {
-    id: 3,
-    title: "driver",
-    company: "uber",
-    location: "London",
-    description: "you need good navigation",
-    date: "10.10.2015",
-  },
-  {
-    id: 4,
-    title: "teacher",
-    company: "school",
-    location: "Hamburg",
-    description: "you need to love kids and teach them",
-    date: "01.07.2020",
-  },
-];
-export default function Card() {
+export default function Card({ data }) {
   return (
     <Container>
       <StyledP>All job listings</StyledP>
-      {data.map((card) => (
-        <StyledSection key={card.id}>
-          <Title>{card.title}</Title>
-          <p>{card.company}</p>
-          <p>{card.location}</p>
-          <Date>{card.date}</Date>
+      {data.map((job) => (
+        <StyledSection key={job.id}>
+          <StyledLink href="/jobs/[id].js">
+            <Title>{job.title}</Title>
+            <p>{job.company}</p>
+            <p>{job.location}</p>
+            <Date>{job.date}</Date>
+          </StyledLink>
         </StyledSection>
       ))}
     </Container>
@@ -75,4 +44,9 @@ const StyledP = styled.p`
 
 const Date = styled.p`
   margin-top: 2em;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;

@@ -7,10 +7,22 @@ export default function Header() {
   return (
     <>
       <Head>
-        <title>{pathname === "/add" ? "add new job" : "job market"}</title>
+        <title>
+          {pathname === "/add"
+            ? "add new job"
+            : pathname === "/jobs/[id].js"
+            ? "job details"
+            : "job market"}
+        </title>
         <meta
           key="title"
-          content={pathname === "/add" ? "add new job" : "job market"}
+          content={
+            pathname === "/add"
+              ? "add new job"
+              : pathname === "/jobs"
+              ? "job details"
+              : "job market"
+          }
         ></meta>
       </Head>
 
@@ -20,8 +32,12 @@ export default function Header() {
           <Link href="/add">
             <img src="assets/icons/add-icon.png" alt="add-icon" />
           </Link>
-        ) : (
+        ) : pathname === "/add" ? (
           <Link href="/">
+            <img src="assets/icons/return-icon.png" alt="return-icon" />
+          </Link>
+        ) : (
+          <Link href="/jobs/[id].js">
             <img src="assets/icons/return-icon.png" alt="return-icon" />
           </Link>
         )}

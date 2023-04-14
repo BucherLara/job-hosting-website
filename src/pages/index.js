@@ -1,9 +1,9 @@
 import Card from "../../components/Card";
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <>
-      <Card />
+      <Card data={data} />
     </>
   );
 }
