@@ -5,9 +5,9 @@ export default function Card({ data }) {
   return (
     <Container>
       <StyledP>All job listings</StyledP>
-      {data.map((job) => (
-        <StyledSection key={job.id}>
-          <StyledLink href="/jobs/[id].js">
+      {data?.documents?.map((job) => (
+        <StyledSection key={job.$id}>
+          <StyledLink href={`/jobs/${job.$id}.js`}>
             <Title>{job.title}</Title>
             <p>{job.company}</p>
             <p>{job.location}</p>

@@ -1,24 +1,48 @@
-import { useRouter } from "next/router";
+import { Client, Databases } from "appwrite";
 
 export default function JobDetails({ data }) {
-  const { query } = useRouter();
-  const { id } = query;
-
-  function getJobById(id) {
-    return data.find((job) => job.id === id);
-  }
-  const jobDetail = getJobById(id);
-
-  if (!jobDetail) return <h2>...loading</h2>;
+  console.log(data);
 
   return (
     <section>
-      <p>{jobDetail.title}</p>
-      <p>{jobDetail.company}</p>
-      <p>{jobDetail.location}</p>
-      <p>{jobDetail.date}</p>
+      <p>{data.title}</p>
+      <p>{data.company}</p>
+      <p>{data.location}</p>
+      <p>{data.date}</p>
       <p>Job Description</p>
-      <StyledArticle>{jobDetail.description}</StyledArticle>
+      {/* <StyledArticle>{data.description}</StyledArticle> */}
     </section>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { id } = context.query;
+
+  const queryId = id.slice(0, -3);
+
+  try {
+    const client = new Client();
+
+    client
+      .setEndpoint("http://localhost/v1")
+      .setProject("643d00957bd598fa496e");
+
+    const databases = new Databases(client);
+
+    const promise = databases.getDocument('jobs', '643d00e3b2a4467b56ab', queryId);
+
+    return {
+      props: {
+        data: await promise,
+      }
+    };
+  } catch (error) {
+    console.log(error);
+
+    return {
+      props: {
+        data: null,
+      },
+    };
+  }
 }
