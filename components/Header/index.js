@@ -3,14 +3,16 @@ import Head from "next/head";
 import Link from "next/link";
 
 export default function Header() {
-  const { pathname } = useRouter();
+  const { pathname, query } = useRouter();
+  const { id } = query;
+
   return (
     <>
       <Head>
         <title>
           {pathname === "/add"
             ? "add new job"
-            : pathname === "/jobs/[id].js"
+            : pathname === `/jobs/${id}`
             ? "job details"
             : "job market"}
         </title>
@@ -30,15 +32,15 @@ export default function Header() {
         <h3>Job Market</h3>
         {pathname === "/" ? (
           <Link href="/add">
-            <img src="assets/icons/add-icon.png" alt="add-icon" />
+            <img src="/assets/icons/add-icon.png" alt="add-icon" />
           </Link>
         ) : pathname === "/add" ? (
           <Link href="/">
-            <img src="assets/icons/return-icon.png" alt="return-icon" />
+            <img src="/assets/icons/return-icon.png" alt="return-icon" />
           </Link>
         ) : (
-          <Link href="/jobs/[id].js">
-            <img src="assets/icons/return-icon.png" alt="return-icon" />
+          <Link href="/">
+            <img src="/assets/icons/return-icon.png" alt="return-icon" />
           </Link>
         )}
       </header>

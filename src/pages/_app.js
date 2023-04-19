@@ -39,7 +39,7 @@ const data = [
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <Header />
+      <Header data={data} />
       <Component {...pageProps} data={data} />
     </>
   );

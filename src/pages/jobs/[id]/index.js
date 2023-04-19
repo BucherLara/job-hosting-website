@@ -5,8 +5,9 @@ export default function JobDetails({ data }) {
   const { id } = query;
 
   function getJobById(id) {
-    return data.find((job) => job.id === id);
+    return data.find((job) => job.id == id);
   }
+
   const jobDetail = getJobById(id);
 
   if (!jobDetail) return <h2>...loading</h2>;
@@ -18,7 +19,8 @@ export default function JobDetails({ data }) {
       <p>{jobDetail.location}</p>
       <p>{jobDetail.date}</p>
       <p>Job Description</p>
-      <StyledArticle>{jobDetail.description}</StyledArticle>
+      <article>{jobDetail.description}</article>
+      <button type="button">Apply now</button>
     </section>
   );
 }
