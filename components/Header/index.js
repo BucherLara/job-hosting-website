@@ -3,8 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 
 export default function Header() {
-  const { pathname, query } = useRouter();
-  const { id } = query;
+  const { pathname } = useRouter();
 
   return (
     <>
@@ -12,7 +11,7 @@ export default function Header() {
         <title>
           {pathname === "/add"
             ? "add new job"
-            : pathname === `/jobs/${id}`
+            : pathname === "/jobs/[id]"
             ? "job details"
             : "job market"}
         </title>
