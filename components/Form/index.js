@@ -1,4 +1,4 @@
-export default function Form({ onSubmit, setObject }) {
+export default function Form({ setObject }) {
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -7,7 +7,6 @@ export default function Form({ onSubmit, setObject }) {
     const data = Object.fromEntries(formData);
 
     setObject(data);
-    onSubmit(data);
 
     event.target.reset();
   }

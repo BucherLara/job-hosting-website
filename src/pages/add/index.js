@@ -1,6 +1,7 @@
 import Form from "../../../components/Form";
 import { Client, Databases, ID } from "appwrite";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function AddNewJobs() {
   const [object, setObject] = useState();
@@ -37,10 +38,17 @@ export default function AddNewJobs() {
       };
     }
   }
+  useEffect(() => {
+    if (object === undefined) return;
+    else {
+      console.log(object);
+      addNewElementToDatabase(object);
+    }
+  }, [object]);
 
   return (
     <>
-      <Form onSubmit={addNewElementToDatabase} setObject={setObject} />
+      <Form setObject={setObject} />
     </>
   );
 }
