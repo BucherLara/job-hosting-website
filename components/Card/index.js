@@ -4,13 +4,13 @@ import Link from "next/link";
 export default function Card({ data }) {
   return (
     <Container>
-      <StyledP>All job listings</StyledP>
+      <StyledP>Job-Feed</StyledP>
       {data.documents.map((job) => (
         <StyledSection key={job.$id}>
           <StyledLink href={`/jobs/${job.$id}`}>
             <Title>{job.title}</Title>
             <p>{job.company}</p>
-            <p>{job.location}</p>
+            <StyledLocation>{job.location}</StyledLocation>
             <Date>{job.date}</Date>
           </StyledLink>
         </StyledSection>
@@ -27,6 +27,7 @@ const Container = styled.div`
 `;
 const Title = styled.p`
   font-weight: bold;
+  color: var(--secondary-color);
 `;
 
 const StyledSection = styled.section`
@@ -35,18 +36,24 @@ const StyledSection = styled.section`
   margin: 2em;
   padding: 0.5em;
   border-radius: 30px;
-  width: 30%;
+  width: 60%;
 `;
 
 const StyledP = styled.p`
   text-align: center;
+  font-weight: bold;
 `;
 
 const Date = styled.p`
   margin-top: 2em;
+  font-size: 0.8rem;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
+`;
+
+const StyledLocation = styled.p`
+  margin-top: -2.5%;
 `;
