@@ -5,12 +5,12 @@ import styled from "styled-components";
 export default function JobDetails({ data2 }) {
   return (
     <StyledSection>
-      <Title>{data2.title}</Title>
-      <StyledParagraph>{data2.company}</StyledParagraph>
-      <StyledParagraph>{data2.location}</StyledParagraph>
-      <StyledParagraph>{data2.date}</StyledParagraph>
+      <Title>{data2?.title}</Title>
+      <StyledParagraph>{data2?.company}</StyledParagraph>
+      <StyledParagraph>{data2?.location}</StyledParagraph>
+      <StyledParagraph>{data2?.date}</StyledParagraph>
       <Describtion>Job Description</Describtion>
-      <StyledArticle>{data2.description}</StyledArticle>
+      <StyledArticle>{data2?.description}</StyledArticle>
       <StyledLink href="https://blog.logrocket.com/" target="_blank">
         Apply now
       </StyledLink>
